@@ -17,13 +17,13 @@ Also at beggining center window on screen.
 
 ## Visuals
 
-![Main window](Captura de pantalla de 2025-11-29 10-18-00.png)
+![Main window](Captura_de_pantalla_de_2025-11-29_10-18-00.png)
 
 ## Installation
 
 You need to have installed python3.
 
-You only need to install imports with pip: tkinter, os, Xlib (only for Linux), mpv or datetime if you don't have some of them installed.
+You only need to install imports with pip: tkinter, os, Xlib (only for Linux), mpv, ctypes (only for Windows) or datetime if you don't have some of them installed.
 
 Example:
 
