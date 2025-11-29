@@ -10,9 +10,8 @@ RestTime v1.01
 
 ## Description
 
-Is a countdown timer at end demands attention. It uses Xlib APIs _NET_ACTIVE_WINDOW to get window ID and _NET_WM_STATE_DEMANDS_ATTENTION to get window's attention on Linux and
-
-Windows APIs FlashWindowEx for Windows.
+Is a countdown timer at end demands attention. It uses Xlib APIs _NET_ACTIVE_WINDOW to get window ID
+and _NET_WM_STATE_DEMANDS_ATTENTION to get window's attention on Linux and Windows APIs FlashWindowEx for Windows.
 
 Also at beggining center window on screen.
 
