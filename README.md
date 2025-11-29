@@ -10,7 +10,7 @@ RestTime v1.00
 
 ## Description
 
-Is a countdown timer at end demands attention. It uses Xlib APIs _NET_ACTIVE_WINDOW to get window ID and _NET_WM_STATE_DEMANDS_ATTENTION to get window's attention.
+Is a countdown timer at end demands attention (only for Linux). It uses Xlib APIs _NET_ACTIVE_WINDOW to get window ID and _NET_WM_STATE_DEMANDS_ATTENTION to get window's attention.
 
 Also at beggining center window on screen.
 
@@ -22,7 +22,7 @@ Also at beggining center window on screen.
 
 You need to have installed python3.
 
-You only need to install imports with pip: tkinter, os, Xlib, mpv or datetime if you don't have some of them installed.
+You only need to install imports with pip: tkinter, os, Xlib (only for Linux), mpv or datetime if you don't have some of them installed.
 
 Example:
 
@@ -56,7 +56,7 @@ I welcome any improvements.
 
 ## Contributing
 
-I welcome any improvements.
+I welcome any improvements. Specially window demand attention for Windows.
 
 ## Authors and acknowledgment
 

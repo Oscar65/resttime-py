@@ -1,13 +1,20 @@
 #!/usr/bin/env python3
+import sys
 from tkinter import *
 from tkinter import ttk, filedialog, messagebox
-import tempfile
-import uuid
 import os
-import time
-from Xlib import display, X
-from Xlib.protocol import event
-import mpv
+if sys.platform == "linux":
+    from Xlib import display, X
+    from Xlib.protocol import event
+
+try:
+    import mpv
+    _loadedMPV=True
+    print("✅ Librería cargada exitosamente")
+except ImportError as e:
+    _loadedMPV=False
+    print(f"❌ No se pudo cargar la librería: {e}")
+
 from datetime import datetime
 
 class RestTime:
@@ -15,7 +22,6 @@ class RestTime:
         self.timer_activo = False
         self.timer_contador = 0
         self.window_id = None
-        self.d = display.Display()
 
         self._root = Tk()
         self._root.state(['iconic'])
@@ -27,20 +33,22 @@ class RestTime:
         
         self.ajusta_ventana()
         self._root.state(['normal'])
-        
-        root = self.d.screen().root
+
+        if sys.platform == "linux":      
+            self.d = display.Display()
+            root = self.d.screen().root
             
-        # Método _NET_ACTIVE_WINDOW para obtener el id de la ventana.
-        self.log("Probando _NET_ACTIVE_WINDOW...")
-        try:
-            atom = self.d.intern_atom('_NET_ACTIVE_WINDOW')
-            prop = root.get_full_property(atom, X.AnyPropertyType)
-            self.window_id = prop.value[0]
-            if prop and prop.value:
-                self.window_id_hex = hex(prop.value[0])
-                self.log(f"✅ Encontrado ID de Ventana: {self.window_id} {self.window_id_hex}")
-        except Exception as err:
-            self.log(err)
+            # Método _NET_ACTIVE_WINDOW para obtener el id de la ventana.
+            self.log("Probando _NET_ACTIVE_WINDOW...")
+            try:
+                atom = self.d.intern_atom('_NET_ACTIVE_WINDOW')
+                prop = root.get_full_property(atom, X.AnyPropertyType)
+                self.window_id = prop.value[0]
+                if prop and prop.value:
+                    self.window_id_hex = hex(prop.value[0])
+                    self.log(f"✅ Encontrado ID de Ventana: {self.window_id_hex}")
+            except Exception as err:
+                self.log(err)
 
     def create_layout(self):       
         self._mainframe = ttk.Frame(self._root, padding='5 5 5 5')
@@ -158,7 +166,7 @@ class RestTime:
         return False
 
     def validar_entrada_0a5(self, nuevo_texto):
-        """Valida que la entrada sea un solo dígito numérico"""
+        """Valida que la entrada sea un solo dígito numérico de 0 a 5"""
         # Permitir campo vacío (para poder borrar).
         if nuevo_texto == "":
             return True
@@ -233,33 +241,34 @@ class RestTime:
                 self._segundos1.state(["!disabled"])
                 self._segundos2.state(["!disabled"])
                 # Reproduce un sonido.
-                sonido1='Spo.wav'
-                sonido2='IsTimeToRest.amr'
-                player = mpv.MPV()
-                if os.path.exists(sonido1):
-                    for i in range(5):
-                        player.play(sonido1)
-                        player.wait_for_playback()  # Espera a que termine
-                else:
-                    print(f"No existe el fichero {sonido1}")
-                if os.path.exists(sonido2):
-                    player.play(sonido2)
-                    player.wait_for_playback()
-                else:
-                    print(f"No existe el fichero {sonido2}")
-                player.terminate()
-                # Muestra el aviso en la ventana minimizada o sin foco.
-                atom_demands_attention = self.d.intern_atom('_NET_WM_STATE_DEMANDS_ATTENTION')
-                atom_wm_state = self.d.intern_atom('_NET_WM_STATE')
-                event_data = event.ClientMessage(
-                    window=self.window_id,
-                    client_type=atom_wm_state,
-                    data=(32, [1, atom_demands_attention, 0, 0, 0])
-                )
-                root = self.d.screen().root
-                root.send_event(event_data, event_mask=X.SubstructureNotifyMask | X.SubstructureRedirectMask)
-                self.d.flush()
-                return
+                if _loadedMPV:
+                    sonido1='Spo.wav'
+                    sonido2='IsTimeToRest.amr'
+                    player = mpv.MPV()
+                    if os.path.exists(sonido1):
+                        for i in range(5):
+                            player.play(sonido1)
+                            player.wait_for_playback()  # Espera a que termine
+                    else:
+                        print(f"No existe el fichero {sonido1}")
+                    if os.path.exists(sonido2):
+                        player.play(sonido2)
+                        player.wait_for_playback()
+                    else:
+                        print(f"No existe el fichero {sonido2}")
+                    player.terminate()
+                if sys.platform == "linux":
+                    # Muestra el aviso en la ventana minimizada o sin foco.
+                    atom_demands_attention = self.d.intern_atom('_NET_WM_STATE_DEMANDS_ATTENTION')
+                    atom_wm_state = self.d.intern_atom('_NET_WM_STATE')
+                    event_data = event.ClientMessage(
+                        window=self.window_id,
+                        client_type=atom_wm_state,
+                        data=(32, [1, atom_demands_attention, 0, 0, 0])
+                    )
+                    root = self.d.screen().root
+                    root.send_event(event_data, event_mask=X.SubstructureNotifyMask | X.SubstructureRedirectMask)
+                    self.d.flush()
 
     def _horas1_update(self, valor):
         valor_entero = int(float(valor))
@@ -296,7 +305,8 @@ class RestTime:
         self._root.update()
         
     def on_cerrar(self):
-        self.d.close()
+        if sys.platform == "linux":
+            self.d.close()
         self._root.destroy()
 
     def ejecutar(self):
