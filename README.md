@@ -2,7 +2,7 @@
 
 ## Getting started
 
-Clone this repository and check installation.
+Clone this repository and follow installation.
 
 ## Name
 
@@ -22,16 +22,22 @@ Also at beggining center window on screen.
 
 You need to have installed python3.
 
-Only you need to install with pip: tkinter, os, Xlib, mpv or datetime if you don't have some of them installed.
+You only need to install imports with pip: tkinter, os, Xlib, mpv or datetime if you don't have some of them installed.
 
 Example:
+
 $ python3 -m venv venv
+
 $ source venv/bin/activate
+
 $ pip install tkinter
+
 $ python restime.py
+
 $ deactivate
 
 To run:
+
 $ python resttime.py
 
 ## Usage
