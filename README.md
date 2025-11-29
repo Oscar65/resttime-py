@@ -6,11 +6,13 @@ Clone this repository and follow installation.
 
 ## Name
 
-RestTime v1.00
+RestTime v1.01
 
 ## Description
 
-Is a countdown timer at end demands attention (only for Linux). It uses Xlib APIs _NET_ACTIVE_WINDOW to get window ID and _NET_WM_STATE_DEMANDS_ATTENTION to get window's attention.
+Is a countdown timer at end demands attention. It uses Xlib APIs _NET_ACTIVE_WINDOW to get window ID and _NET_WM_STATE_DEMANDS_ATTENTION to get window's attention on Linux and
+
+Windows APIs FlashWindowEx for Windows.
 
 Also at beggining center window on screen.
 
@@ -56,7 +58,7 @@ I welcome any improvements.
 
 ## Contributing
 
-I welcome any improvements. Specially window demand attention for Windows.
+I welcome any improvements.
 
 ## Authors and acknowledgment
 
@@ -68,4 +70,4 @@ GNU Public License Version 3 GPLv3
 
 ## Project status
 
-Finished. v1.00
+v1.01 Works on Linux and Windows.
