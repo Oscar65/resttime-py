@@ -2,7 +2,7 @@
 
 ## Getting started
 
-Clone this repository and follow installation.
+Clone this repository and follow installation help here down.
 
 ## Name
 
@@ -11,7 +11,8 @@ RestTime v1.01
 ## Description
 
 Is a countdown timer at end demands attention. It uses Xlib APIs _NET_ACTIVE_WINDOW to get window ID
-and _NET_WM_STATE_DEMANDS_ATTENTION to get window's attention on Linux and Windows APIs FlashWindowEx for Windows.
+and _NET_WM_STATE_DEMANDS_ATTENTION to get window's attention on Linux and
+Windows APIs FlashWindowEx, GetParent, GetDesktopWindow and SetForegroundWindow.
 
 Also at beggining center window on screen.
 
@@ -24,6 +25,8 @@ Also at beggining center window on screen.
 You need to have installed python3.
 
 You only need to install imports with pip: tkinter, os, Xlib (only for Linux), mpv, ctypes (only for Windows) or datetime if you don't have some of them installed.
+
+If you don't have installed mpv don't install library mpv.
 
 Example:
 
@@ -43,11 +46,15 @@ $
 
 To run:
 
+```bash
 $ python resttime.py
+```
 
 ## Usage
 
 Type time you want and press Start button. If you want to stop click on stop button.
+
+When time end it will play two sounds and window on taskbar will start to flash until get focus.
 
 ## Support
 
