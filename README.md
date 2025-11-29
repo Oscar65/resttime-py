@@ -29,13 +29,15 @@ Example:
 ```bash
 $ python3 -m venv venv
 
-$ source venv/bin/activate
+[venv] $ source venv/bin/activate
 
-$ pip install tkinter
+[venv] $ pip install tkinter
 
-$ python restime.py
+[venv] $ python restime.py
 
-$ deactivate
+[venv] $ deactivate
+
+$
 ```
 
 To run:
