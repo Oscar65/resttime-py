@@ -16,6 +16,8 @@ Windows APIs FlashWindowEx, GetParent, GetDesktopWindow and SetForegroundWindow.
 
 Also at beggining center window on screen.
 
+I developed it to don't stay many hours in front computer without rest. To get a notice after the time preselected.
+
 ## Visuals
 
 ![Main window](Captura_de_pantalla_de_2025-11-29_10-18-00.png)
