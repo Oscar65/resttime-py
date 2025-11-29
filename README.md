@@ -26,7 +26,8 @@ You only need to install imports with pip: tkinter, os, Xlib, mpv or datetime if
 
 Example:
 
-```$ python3 -m venv venv
+```bash
+$ python3 -m venv venv
 
 $ source venv/bin/activate
 
@@ -34,7 +35,8 @@ $ pip install tkinter
 
 $ python restime.py
 
-$ deactivate```
+$ deactivate
+```
 
 To run:
 
