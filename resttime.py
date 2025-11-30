@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import sys
-from tkinter import *
+import tkinter as tk
 from tkinter import ttk
 import os
 if sys.platform == "linux":
@@ -26,7 +26,7 @@ class RestTime:
         self.timer_contador = 0
         self.window_id = None
 
-        self._root = Tk()
+        self._root = tk.Tk()
         self._root.state(['iconic'])
 
         self._root.title('RestTime v1.01')
@@ -57,88 +57,88 @@ class RestTime:
 
     def create_layout(self):
         self._mainframe = ttk.Frame(self._root, padding='5 5 5 5')
-        self._mainframe.grid(row=0, column=0, sticky=(E, W, N, S))
+        self._mainframe.grid(row=0, column=0, sticky=(tk.E, tk.W, tk.N, tk.S))
 
         self._tiempo_frame = ttk.Frame(self._mainframe, padding='0 0 0 0')
-        self._tiempo_frame.grid(row=0, column=0, sticky=(E, W, N, S))
+        self._tiempo_frame.grid(row=0, column=0, sticky=(tk.E, tk.W, tk.N, tk.S))
 
-        self._horas1_sv = StringVar()
+        self._horas1_sv = tk.StringVar()
         self._horas1_sv.set(0)
         self._horas1 = ttk.Entry(self._tiempo_frame, textvariable=self._horas1_sv, width=1, font=('Arial', 150))
-        self._horas1.grid(row=0, column=1, sticky=(S, N))
+        self._horas1.grid(row=0, column=1, sticky=(tk.S, tk.N))
         vcmdh1 = (self._root.register(self.validar_entrada_0a9), '%P')
         self._horas1.config(validate="key", validatecommand=vcmdh1)
-        self._scale_horas1 = ttk.Scale(self._tiempo_frame, orient=VERTICAL, command=self._horas1_update, from_=9, to=0)
-        self._scale_horas1.grid(row=0, column=2, sticky=(S, N))
+        self._scale_horas1 = ttk.Scale(self._tiempo_frame, orient=tk.VERTICAL, command=self._horas1_update, from_=9, to=0)
+        self._scale_horas1.grid(row=0, column=2, sticky=(tk.S, tk.N))
 
-        self._horas2_sv = StringVar()
+        self._horas2_sv = tk.StringVar()
         self._horas2_sv.set(0)
         self._horas2 = ttk.Entry(self._tiempo_frame, textvariable=self._horas2_sv, width=1, font=('Arial', 150))
-        self._horas2.grid(row=0, column=3, sticky=(S, N))
+        self._horas2.grid(row=0, column=3, sticky=(tk.S, tk.N))
         vcmdh2 = (self._root.register(self.validar_entrada_0a9), '%P')
         self._horas2.config(validate="key", validatecommand=vcmdh2)
-        self._scale_horas2 = ttk.Scale(self._tiempo_frame, orient=VERTICAL, command=self._horas2_update, from_=9, to=0)
-        self._scale_horas2.grid(row=0, column=4, sticky=(S, N))
+        self._scale_horas2 = ttk.Scale(self._tiempo_frame, orient=tk.VERTICAL, command=self._horas2_update, from_=9, to=0)
+        self._scale_horas2.grid(row=0, column=4, sticky=(tk.S, tk.N))
 
         self._colon_horas = ttk.Label(self._tiempo_frame, width=0, font=('Arial', 150), text=":")
-        self._colon_horas.grid(row=0, column=5, sticky=(S, N))
+        self._colon_horas.grid(row=0, column=5, sticky=(tk.S, tk.N))
 
-        self._minutos1_sv = StringVar()
+        self._minutos1_sv = tk.StringVar()
         self._minutos1_sv.set(0)
         self._minutos1 = ttk.Entry(self._tiempo_frame, textvariable=self._minutos1_sv, width=1, font=('Arial', 150))
-        self._minutos1.grid(row=0, column=6, sticky=(S, N))
+        self._minutos1.grid(row=0, column=6, sticky=(tk.S, tk.N))
         vcmdm1 = (self._root.register(self.validar_entrada_0a5), '%P')
         self._minutos1.config(validate="key", validatecommand=vcmdm1)
-        self._scale_minutos1 = ttk.Scale(self._tiempo_frame, orient=VERTICAL, command=self._minutos1_update, from_=5, to=0)
-        self._scale_minutos1.grid(row=0, column=7, sticky=(S, N))
+        self._scale_minutos1 = ttk.Scale(self._tiempo_frame, orient=tk.VERTICAL, command=self._minutos1_update, from_=5, to=0)
+        self._scale_minutos1.grid(row=0, column=7, sticky=(tk.S, tk.N))
 
-        self._minutos2_sv = StringVar()
+        self._minutos2_sv = tk.StringVar()
         self._minutos2_sv.set(0)
         self._minutos2 = ttk.Entry(self._tiempo_frame, textvariable=self._minutos2_sv, width=1, font=('Arial', 150))
-        self._minutos2.grid(row=0, column=8, sticky=(S, N))
+        self._minutos2.grid(row=0, column=8, sticky=(tk.S, tk.N))
         vcmdm2 = (self._root.register(self.validar_entrada_0a9), '%P')
         self._minutos2.config(validate="key", validatecommand=vcmdm2)
-        self._scale_minutos2 = ttk.Scale(self._tiempo_frame, orient=VERTICAL, command=self._minutos2_update, from_=9, to=0)
-        self._scale_minutos2.grid(row=0, column=9, sticky=(S, N))
+        self._scale_minutos2 = ttk.Scale(self._tiempo_frame, orient=tk.VERTICAL, command=self._minutos2_update, from_=9, to=0)
+        self._scale_minutos2.grid(row=0, column=9, sticky=(tk.S, tk.N))
 
         self._colon_minutos = ttk.Label(self._tiempo_frame, width=0, font=('Arial', 150), text=":")
-        self._colon_minutos.grid(row=0, column=10, sticky=(S, N))
+        self._colon_minutos.grid(row=0, column=10, sticky=(tk.S, tk.N))
 
-        self._segundos1_sv = StringVar()
+        self._segundos1_sv = tk.StringVar()
         self._segundos1_sv.set(0)
         self._segundos1 = ttk.Entry(self._tiempo_frame, textvariable=self._segundos1_sv, width=1, font=('Arial', 150))
-        self._segundos1.grid(row=0, column=11, sticky=(S, N))
+        self._segundos1.grid(row=0, column=11, sticky=(tk.S, tk.N))
         vcmds1 = (self._root.register(self.validar_entrada_0a5), '%P')
         self._segundos1.config(validate="key", validatecommand=vcmds1)
-        self._scale_segundos1 = ttk.Scale(self._tiempo_frame, orient=VERTICAL, command=self._segundos1_update, from_=5, to=0)
-        self._scale_segundos1.grid(row=0, column=12, sticky=(S, N))
+        self._scale_segundos1 = ttk.Scale(self._tiempo_frame, orient=tk.VERTICAL, command=self._segundos1_update, from_=5, to=0)
+        self._scale_segundos1.grid(row=0, column=12, sticky=(tk.S, tk.N))
 
-        self._segundos2_sv = StringVar()
+        self._segundos2_sv = tk.StringVar()
         self._segundos2_sv.set(0)
         self._segundos2 = ttk.Entry(self._tiempo_frame, textvariable=self._segundos2_sv, width=1, font=('Arial', 150))
-        self._segundos2.grid(row=0, column=13, sticky=(S, N))
+        self._segundos2.grid(row=0, column=13, sticky=(tk.S, tk.N))
         vcmds2 = (self._root.register(self.validar_entrada_0a9), '%P')
         self._segundos2.config(validate="key", validatecommand=vcmds2)
-        self._scale_segundos2 = ttk.Scale(self._tiempo_frame, orient=VERTICAL, command=self._segundos2_update, from_=9, to=0)
-        self._scale_segundos2.grid(row=0, column=14, sticky=(S, N))
+        self._scale_segundos2 = ttk.Scale(self._tiempo_frame, orient=tk.VERTICAL, command=self._segundos2_update, from_=9, to=0)
+        self._scale_segundos2.grid(row=0, column=14, sticky=(tk.S, tk.N))
 
         self._start_btn = ttk.Button(self._tiempo_frame, text="Start", underline=0, command=self._start_timer, padding="5 5 5 5")
         self._root.bind('<Alt-i>', lambda event: self._start_timer())
-        self._start_btn.grid(row=1, column=13, sticky=(E, W), padx=10, pady=10)
+        self._start_btn.grid(row=1, column=13, sticky=(tk.E, tk.W), padx=10, pady=10)
         self._start_btn.rowconfigure(1, weight=1)
 
         self._stop_btn = ttk.Button(self._tiempo_frame, text="Stop", underline=0, command=self._stop_timer, padding="5 5 5 5")
         self._root.bind('<Alt-i>', lambda event: self._stop_timer())
-        self._stop_btn.grid(row=1, column=11, sticky=(E, W), padx=10, pady=10)
+        self._stop_btn.grid(row=1, column=11, sticky=(tk.E, tk.W), padx=10, pady=10)
         self._stop_btn.rowconfigure(1, weight=1)
 
         self._log_frame = ttk.LabelFrame(self._mainframe, text="Log", padding="10")
-        self._log_frame.grid(row=2, column=0, pady=10, sticky=(E, W, N, S))
+        self._log_frame.grid(row=2, column=0, pady=10, sticky=(tk.E, tk.W, tk.N, tk.S))
 
-        self._text_log = Text(self._log_frame, height=6, font=('Courier', 10))
-        self._text_log.grid(row=0, column=0, pady=5, sticky=(E, W, N, S))
-        self._scrollbar_tl = ttk.Scrollbar(self._log_frame, orient=VERTICAL, command=self._text_log.yview)
-        self._scrollbar_tl.grid(row=0, column=1, pady=5, sticky=(N, S))
+        self._text_log = tk.Text(self._log_frame, height=6, font=('Courier', 10))
+        self._text_log.grid(row=0, column=0, pady=5, sticky=(tk.E, tk.W, tk.N, tk.S))
+        self._scrollbar_tl = ttk.Scrollbar(self._log_frame, orient=tk.VERTICAL, command=self._text_log.yview)
+        self._scrollbar_tl.grid(row=0, column=1, pady=5, sticky=(tk.N, tk.S))
         self._text_log.configure(yscrollcommand=self._scrollbar_tl.set)
 
     def configura_layout(self):
@@ -267,11 +267,11 @@ class RestTime:
         Hace parpadear la ventana en la barra de tareas
         """
         # FlashWindowEx function
-        FLASHW_STOP = 0
-        FLASHW_CAPTION = 1
+        #FLASHW_STOP = 0
+        #FLASHW_CAPTION = 1
         FLASHW_TRAY = 2
         FLASHW_ALL = 3
-        FLASHW_TIMER = 4
+        #FLASHW_TIMER = 4
         FLASHW_TIMERNOFG = 12
 
         class FLASHWINFO(ctypes.Structure):
@@ -350,8 +350,8 @@ class RestTime:
     def log(self, mensaje):
         ahora = datetime.now()
         formato_milesimas = ahora.strftime("%Y-%m-%d %H:%M:%S.%f")
-        self._text_log.insert(END, f"[{formato_milesimas}] {mensaje}\n")
-        self._text_log.see(END)
+        self._text_log.insert(tk.END, f"[{formato_milesimas}] {mensaje}\n")
+        self._text_log.see(tk.END)
         self._root.update()
 
     def on_cerrar(self):
