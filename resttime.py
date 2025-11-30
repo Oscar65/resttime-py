@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import sys
 from tkinter import *
-from tkinter import ttk, filedialog, messagebox
+from tkinter import ttk
 import os
 if sys.platform == "linux":
     from Xlib import display, X
@@ -290,7 +290,7 @@ class RestTime:
         flash_info.uCount = count
         flash_info.dwTimeout = timeout
 
-        result = ctypes.windll.user32.FlashWindowEx(ctypes.byref(flash_info))
+        ctypes.windll.user32.FlashWindowEx(ctypes.byref(flash_info))
 
     def muestra_parpadeo_linux(self):
         # Muestra el aviso en la ventana minimizada o sin foco.
