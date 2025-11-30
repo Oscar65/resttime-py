@@ -306,8 +306,9 @@ class RestTime:
         self.d.flush()
 
     def reproduce_sonidos(self):
-        sonido1='Spo.wav'
-        sonido2='IsTimeToRest.amr'
+        current_path=os.path.dirname(os.path.abspath(__file__))
+        sonido1=os.path.join(current_path, 'Spo.wav')
+        sonido2=os.path.join(current_path, 'IsTimeToRest.amr')
         player = mpv.MPV()
         if os.path.exists(sonido1):
             for i in range(5):
