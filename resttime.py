@@ -242,7 +242,8 @@ class RestTime:
             if self.timer_contador > 0:
                 self.log(f"Iniciando timer {self._horas1_sv.get()}"
                          f"{self._horas2_sv.get()}:{self._minutos1_sv.get()}"
-                         f"{self._minutos2_sv.get()}:{self._segundos1_sv.get()}"
+                         f"{self._minutos2_sv.get()}:"
+                         f"{self._segundos1_sv.get()}"
                          f"{self._segundos2_sv.get()}...")
                 self._start_btn.state(["disabled"])
                 self._horas1.state(["disabled"])
