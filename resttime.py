@@ -31,7 +31,7 @@ class RestTime:
         self._root = tk.Tk()
         self._root.state(['iconic'])
 
-        self._root.title('RestTime v1.01')
+        self._root.title('RestTime v1.02')
 
         self.create_layout()
         self.configura_layout()
@@ -288,7 +288,7 @@ class RestTime:
             seg2 = int(self.timer_contador - (hor1 * 36000) - (hor2 * 3600) -
                        (min1 * 600) - (min2 * 60) - (seg1 * 10))
             self._root.title(f"{hor1}{hor2}:{min1}{min2}:{seg1}{seg2}"
-                             "{self.timer_contador}s")
+                             f" ({self.timer_contador}s)")
             self._horas1_sv.set(hor1)
             self._horas2_sv.set(hor2)
             self._minutos1_sv.set(min1)
